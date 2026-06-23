@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroForte - Gestão e Economia Agrícola</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
 
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Agro<span>Forte</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                    <li><a href="#economia" class="nav-link">Economia</a></li>
+                    <li><a href="#simulador" class="nav-link">Simulador</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Economia Inteligente para um Agro Forte</h2>
+            <p>Monitore custos de produção, compreenda o mercado de commodities e tome decisões baseadas em dados.</p>
+            <button class="btn" onclick="scrollToSection('#simulador')">Testar Simulador</button>
+        </div>
+    </section>
+
+    <section id="dashboard" class="container">
+        <div class="section-title">
+            <h2>Painel Econômico da Safra</h2>
+            <p>Clique nos filtros do gráfico para isolar os dados de interesse.</p>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3>Evolução do Lucro Líquido (R$ por Hectare)</h3>
+                <canvas id="lucroChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Distribuição de Custos Operacionais (%)</h3>
+                <canvas id="custosChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="economia" class="bg-alt">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pilares da Macroeconomia Agrícola</h2>
+                <p>Clique em "Saber Mais" para abrir os detalhes de cada estratégia econômica.</p>
+            </div>
+            
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="icon">📈</div>
+                    <h3>Mercado de Hedge</h3>
+                    <p>Proteção contra a oscilação de preços de commodities agrícolas utilizando o mercado futuro.</p>
+                    <button class="btn-sm" onclick="openModal('hedge')">Saber Mais</button>
+                </div>
+                <div class="pillar-card">
+                    <div class="icon">📊</div>
+                    <h3>Margem de Contribuição</h3>
+                    <p>Cálculo crucial para entender o quanto a venda de cada saca ajuda a cobrir os custos fixos.</p>
+                    <button class="btn-sm" onclick="openModal('margem')">Saber Mais</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="simulador" class="container">
+        <div class="section-title">
+            <h2>Simulador Rápido de Receita</h2>
+            <p>Preencha os campos abaixo e clique em calcular para obter uma estimativa de receita bruta.</p>
+        </div>
+        <div class="simulator-box">
+            <div class="input-group">
+                <label for="area">Área Cultivada (Hectares):</label>
+                <input type="number" id="area" value="150">
+            </div>
+            <div class="input-group">
+                <label for="produtividade">Produtividade Média (Sacas/HA):</label>
+                <input type="number" id="produtividade" value="70">
+            </div>
+            <div class="input-group">
+                <label for="preco">Preço por Saca (R$):</label>
+                <input type="number" id="preco" value="135">
+            </div>
+            <button id="btnCalcular" class="btn" style="width: 100%;">Calcular Estimativa</button>
+
+            <div id="resultadoSimulacao" class="resultado" style="display: none;">
+                <p>Receita Bruta Projetada:</p>
+                <h3 id="valorResultado">R$ 0,00</h3>
+            </div>
+        </div>
+    </section>
+
+    <div id="modalContainer" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h2 id="modalTitle">Título do Conteúdo</h2>
+            <p id="modalText">Texto detalhado aqui...</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AgroForte Consultoria Tecnológica. Soluções de ponta para o agronegócio.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
